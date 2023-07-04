@@ -580,21 +580,24 @@ button{
 }
 .divcontact{
   border: 2px solid ;
-  height: 95vh;
+  height: 93vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   margin: 10px;
 }
 .colorblue{
   color: burlywood;
+  display: block;
 }
 .divcontactnext{
   border: 2px solid red;
 }
 .topcontactdiv{
   border:2px solid;
-  margin: 6px;
+  margin: 0px;
   background:url('./components/images/Sprinkle\ \(2\).svg');
   color: white;
+}
+.spacetop{
+  margin-top: 130px;
 }
