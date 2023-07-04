@@ -58,10 +58,10 @@ export default function Yourpost() {
 async function handleshare(id){
     console.log("share ", id);
     await navigator.share({
-      title:"Hey! Would U Like To See My New Outfit",
-      text:"You Can Also Rate My Outfit On A Scale Of 10 \n To See The Outfit \n Follow This Link : ",
-      url:`http://localhost:3000/post/${id}`
-    });
+        title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
+        text:`Hey! Want To See My New Outfit ???\nYou Can Rate My Outfit On A Scale Of 10\nTo See The Outfit\nClick On The Link Given Below.\nAfter Successfull Login You Will See A Menu In That Click On "SearchPost"\nThen Search This Id.\nId = ${id}`,
+        url:`https://rateyouroutfit101.onrender.com`
+      });
   }
   return (
     <>
@@ -89,10 +89,10 @@ async function handleshare(id){
                 </div>
                 </div>
                 </div>
-                <Link to="/" className='makecenter2 linkofgoto margintop'>Back To Home</Link>
                 </>
             })
         }
+        <Link to="/" className='makecenter2 linkofgoto margintop'>Back To Home</Link>
     </div>
     </div>
     </>
