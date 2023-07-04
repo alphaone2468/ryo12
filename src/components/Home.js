@@ -136,8 +136,8 @@ export default function Home() {
     console.log("share ", id);
     await navigator.share({
       title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
-      text:"To See The Outfit \n Follow This Link : ",
-      url:`https://rateyouroutfit101.onrender.com/post/${id}`
+      text:`Hey! How Much Would You Rate This Outfit On A Scale Of 10 \n To See The Outfit \n Click On The Link Given Below. \n After Successfull Login You Will See A Menu In That Click On "SearchPost" \n Then Search This Id. \n  Id = ${id}     `,
+      url:`https://rateyouroutfit101.onrender.com`
     });
   }
 

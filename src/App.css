@@ -332,7 +332,7 @@ button{
 }
 .makepostbox{
   margin-bottom: 21px;
-    padding: 9px;
+    padding: 0px;
     /* box-shadow: 1px 1px 10px darkgrey; */
     border-radius: 10px;
     margin-left: 10px;
@@ -580,13 +580,15 @@ button{
 }
 .divcontact{
   border: 2px solid ;
-  height: 93vh;
+  height: 89vh;
   display: flex;
   justify-content: center;
   margin: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
 }
 .colorblue{
-  color: burlywood;
+  color: blue;
   display: block;
 }
 .divcontactnext{
@@ -594,9 +596,9 @@ button{
 }
 .topcontactdiv{
   border:2px solid;
-  margin: 0px;
-  background:url('./components/images/Sprinkle\ \(2\).svg');
-  color: white;
+  margin: 5px;
+  border-radius: 10px;
+  /* background:url('./components/images/Sprinkle\ \(2\).svg'); */
 }
 .spacetop{
   margin-top: 130px;
