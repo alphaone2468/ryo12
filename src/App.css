@@ -1,6 +1,5 @@
 *{
-  font-family: 'Outfit', sans-serif;
-  font-family: unset;
+  font-family: 'Outfit', sans-serif !important;
 }
 .nav{
   margin: 0px;
