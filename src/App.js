@@ -1,15 +1,17 @@
 import React from "react"
 import "./App.css"
 import { Route,Routes,BrowserRouter } from "react-router-dom"
-import Navbar from "./components/Navbar"
 import Reg from "./components/Reg"
 import Login from "./components/Login"
 import Home from "./components/Home"
-import About from "./components/About"
 import Postimage from "./components/Postimage"
 import Back from "./components/Back"
 import Seecomments from './components/SeeComments'
 import Yourpost from "./components/Yourpost"
+import SearchUser from "./components/SearchUser"
+import GetAUserPosts from "./components/GetAUserPosts"
+import Goto from "./components/Goto"
+import Contact from "./components/Contact"
 
 function App(){
   return(
@@ -17,13 +19,16 @@ function App(){
       {/* <Navbar/> */}
       <Routes>
         <Route path="/"element={<Home/>}></Route>
-        <Route path="/about" element={<About/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/registration" element={<Reg/>}></Route>
         <Route path="/postimage" element={<Postimage/>}></Route>
         <Route path="/back" element={<Back/>}></Route>
         <Route path="/morecomments" element={<Seecomments/>}></Route>
         <Route path="/yourpost" element={<Yourpost/>}></Route>
+        <Route path="/searchuser" element={<SearchUser/>}></Route>
+        <Route path="/userposts" element={<GetAUserPosts/>}></Route>
+        <Route path="/post/:uniqueid" element={<Goto/>}></Route>
+        <Route path="/contactme" element={<Contact/>}></Route>
         <Route element={<h1>error page</h1>}></Route>
 
 

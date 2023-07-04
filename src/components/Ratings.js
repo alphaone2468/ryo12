@@ -8,7 +8,7 @@ export default function Ratings(props) {
         for (let index = 0; index < 11; index++) {
           document.getElementById(`child${index+1}${u}`).style.backgroundColor="white"
         }
-        //console.log("final",i-1)
+        console.log("final",i-1)
         const final=i-1
         localStorage.setItem("deleteme",final);
         for(var j=0;j<i;j++){
@@ -26,7 +26,7 @@ export default function Ratings(props) {
             }
         })
         const res=await f.json()
-        //console.log(res)
+        console.log(res)
 
       }
   return (

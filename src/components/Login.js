@@ -29,14 +29,14 @@ export default function Login() {
       }
     })
     const res=await f.json()
-    //console.log(res)
+    console.log(res)
     if(res.error){
       document.getElementById("showmsg").style.display="block"
       setloading(false);
     }
     else{
-      //console.log(res.success)
-      //console.log(res.email)
+      console.log(res.success)
+      console.log(res.email)
       localStorage.setItem("ryo",res.success)
       localStorage.setItem("ryoe",res.email)
       nav("/")

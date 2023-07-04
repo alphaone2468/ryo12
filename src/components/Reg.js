@@ -11,9 +11,10 @@ function Reg(){
         document.getElementById("two").style.display="none"
         document.getElementById("three").style.display="none"
         document.getElementById("four").style.display="none"
-        //console.log(name)
-        //console.log(email)
-        //console.log(password)
+        document.getElementById("five").style.display="none"
+        console.log(name)
+        console.log(email)
+        console.log(password)
         if(name.length<1){
             document.getElementById("one").style.display="block"
             return false
@@ -33,7 +34,7 @@ function Reg(){
             seenupto:1
         }
         setloading(true);
-        //console.log(obj)
+        console.log(obj)
         let f=await fetch("https://ryobackend.onrender.com/reg",{
             method:"POST",
             body:JSON.stringify(obj),
@@ -42,13 +43,20 @@ function Reg(){
             }
         })
         let data = await f.json()
-        //console.log(data)
-        if(data.error){
+        console.log(data)
+        var set=0;
+        if(data.error=="email exist"){
             document.getElementById("four").style.display="block"
+            set = set + 1;
         }
-        else{
+        if(data.error=="username exist"){
+            document.getElementById("five").style.display="block"
+            set=set+1;
+        }
+        if(set==0){
             localStorage.setItem("ryo",name)
             nav("/login")
+
         }
 
     }
@@ -66,6 +74,7 @@ function Reg(){
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <p className="makemered" id="one">Field is Missing</p>
+                <p className="makemered" id="five">Usrname Already Exist</p>
                 </div>
                 <div className="group">
                 <label>Email</label>

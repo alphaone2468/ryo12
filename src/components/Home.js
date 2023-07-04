@@ -4,6 +4,9 @@ import photo from './images/ProfileLogo.jpg'
 import { useNavigate,Link } from 'react-router-dom'
 import load from './images/loading.gif'
 import arrow from './images/arrow1.png'
+import share2 from './images/share2.png'
+import lines from './images/navbarlines.jpg'
+
 
 
 export default function Home() {
@@ -12,8 +15,8 @@ export default function Home() {
   const [rat,setrat]=useState([])
   const [comm,setcomm]=useState();
   const [loading,setloading]=useState(false);
-  const [open,setopen]=useState(false);
   const [commentloading,setcommentloading]=useState(false);
+  const [open,setopen]=useState(false);
   useEffect(()=>{
     const a=localStorage.getItem("ryo")
     document.getElementById("one").innerHTML=a
@@ -33,7 +36,7 @@ export default function Home() {
         email:b
       }
       setloading(true);
-      //console.log(loading)
+      console.log(loading)
       const f=await fetch("https://ryobackend.onrender.com/getpost",{
         method:'POST',
         body:JSON.stringify(objn),
@@ -42,17 +45,17 @@ export default function Home() {
         }
       })
       const res=await f.json()
-      //console.log(res)
+      console.log(res)
       try{
-        //console.log(res[0].comments)
+        console.log(res[0].comments)
 
       }
       catch{
-        //console.log("error");
+        console.log("error");
       }
       res.map((e)=>{
         var arr=e.comments[0].ratings;
-        //console.log(e.comments[0].ratings);
+        console.log(e.comments[0].ratings);
         var sum=0;
         for (let index = 0; index < arr.length; index++) {
           sum=sum+arr[index]
@@ -60,29 +63,29 @@ export default function Home() {
         }
         var avg=sum/arr.length;
 
-        //console.log(avg);
+        console.log(avg);
         rate.push(avg);
       })
       setloading(false);
-      //console.log(res)
-      //console.log(rate)
+      console.log(res)
+      console.log(rate)
       setrat(rate)
       setdata(res)
     }
 
   function handlenewratings(val){
-    // //console.log(" i sm calling" , val)
+    // console.log(" i sm calling" , val)
     var r=localStorage.getItem("deleteme");
-    // //console.log(" i  am from home and value is ",r);
+    // console.log(" i  am from home and value is ",r);
     var c=document.getElementById(`count${val}`).innerHTML.slice(17,19)
-    // //console.log("i am c of val",c)
+    // console.log("i am c of val",c)
     var mul=document.getElementById(`rating${val}`).innerHTML.slice(16,40)
-    // //console.log(mul)
+    // console.log(mul)
     var finalvalue=eval(mul*c)
-    // //console.log(finalvalue)
+    // console.log(finalvalue)
     var af=finalvalue+parseInt(r);
     var seriousfinal=af/(parseInt(c)+1)
-    // //console.log(seriousfinal)
+    // console.log(seriousfinal)
     document.getElementById(`rating${val}`).innerHTML=`OverAll rating  : ${seriousfinal}`
     document.getElementById(`count${val}`).innerHTML=`No. of Ratings   : ${parseInt(c)+1}`
     document.getElementById(`urated${val}`).style.display='block';
@@ -93,11 +96,11 @@ export default function Home() {
     },2000)
   }
   function handlenext(){
-    // //console.log("i am next")
+    // console.log("i am next")
     nav("/back")
   }
   async function handlecomm(ids){
-    // //console.log(comm)
+    // console.log(comm)
     var n=localStorage.getItem('ryo')
     const obj={
       comment:comm,
@@ -105,7 +108,7 @@ export default function Home() {
       id:ids
     }
     setcommentloading(true);
-    // //console.log(obj)
+    // console.log(obj)
     const f = await fetch("https://ryobackend.onrender.com/comment",{
       method:'PUT',
       body:JSON.stringify(obj),
@@ -114,9 +117,9 @@ export default function Home() {
       }
     })
     const res= await f.json();
-    // //console.log(res)
+    // console.log(res)
     setcommentloading(false);
-    if(res.success = "comment posted"){
+    if(res.success == "comment posted"){
       document.getElementById(`upperdiv${ids}`).style.display='block';
       setTimeout(() => {
         document.getElementById(`upperdiv${ids}`).style.display='none';
@@ -125,21 +128,19 @@ export default function Home() {
     }
   }
   function handleMoreComments(val){
-    // //console.log(val)
+    // console.log(val)
     localStorage.setItem("ryocomm",val)
     nav("/morecomments")
   }
-  function HandleNavbarOpenClose(){
-    if(open){
-      setopen(false);
-      document.getElementById("hidenavv").style.display="none";
-    }
-    else{
-      setopen(true);
-      document.getElementById("hidenavv").style.display="block";
-    }
-    // //console.log(open)
+  async function handleshare(id){
+    console.log("share ", id);
+    await navigator.share({
+      title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
+      text:"To See The Outfit \n Follow This Link : ",
+      url:`https://rateyouroutfit101.onrender.com/post/${id}`
+    });
   }
+
   async function handlereset(){
     const e=localStorage.getItem("ryoe")
     const obj={
@@ -152,25 +153,46 @@ export default function Home() {
         "Content-Type":"application/json"
       }
     })
-    const res=await f.json();
-    // //console.log(res);
+    await f.json();
+    // console.log(res);
+  }
+  function handleopenclose(){
+    console.log("calling")
+    if(open){
+      setopen(false)
+    }
+    else{
+      setopen(true);
+
+    }
   }
   
   return (
     <>
     <div className="tophomecon">
 
-
     <div className="postcon">
     <div className="floatr">
     <span id="one"></span>
-    <img src={photo} alt="" id="profileimg" className="makeMePointer" onClick={HandleNavbarOpenClose}/>
+    <img src={photo} alt="" id="profileimg" className="makeMePointer"/>
     </div>
+    <div className="upline">
+    <div className='opennavbar' onClick={handleopenclose}>
+
+    </div>
+    </div>
+    <div style={{display:"flex",flexDirection:'row-reverse'}} onClick={handleopenclose}>
+    <img src={lines} alt="error" className='postimg'/>
+    </div>
+    {(open) ? 
     <div className="navv" id="hidenavv">
       <Link to="/postimage" className='linkofnav'><p>Post A Image</p></Link>
       <Link to="/yourpost" className='linkofnav'> <p>Your Posts</p></Link>
       <Link to="/login" className='linkofnav'> <p>logout</p></Link>
-    </div>
+      <Link to="/searchuser" className='linkofnav'> <p>Search</p></Link>
+      <Link to="/contactme" className='linkofnav'> <p>Contact Me</p></Link>
+    </div> : <p></p>
+}
     <div className='makespacetop'></div>
     {(loading)? <div className="loadclass">
     <img src={load} alt="" className='loadimg'/>
@@ -190,6 +212,11 @@ export default function Home() {
         </p>
         <p id={`count${e.uniqueid}`}>No. Of  Ratings: {e.comments[1].count}</p>
         <p>{e.uniqueid}</p>
+        <div className="sharediv" onClick={()=>{handleshare(e.uniqueid)}}>
+        <img src={share2} alt="" className='shareimg' />
+        <span  className='sharetext'>Share</span>
+
+        </div>
         <p id={`urated${e.uniqueid}`} style={{display:"none"}}> u rated :</p>
         <div onClick={()=>handlenewratings(e.uniqueid)} id={`hideMeAfterRated${e.uniqueid}`}>
         <Ratings name={e.uniqueid}/>
