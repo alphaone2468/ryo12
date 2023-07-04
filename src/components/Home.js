@@ -5,7 +5,7 @@ import { useNavigate,Link } from 'react-router-dom'
 import load from './images/loading.gif'
 import arrow from './images/arrow1.png'
 import share2 from './images/share2.png'
-import lines from './images/navbarlines.jpg'
+import lines from './images/test.jpg'
 
 
 
@@ -136,7 +136,7 @@ export default function Home() {
     console.log("share ", id);
     await navigator.share({
       title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
-      text:`Hey! How Much Would You Rate This Outfit On A Scale Of 10 \n To See The Outfit \n Click On The Link Given Below. \n After Successfull Login You Will See A Menu In That Click On "SearchPost" \n Then Search This Id. \n  Id = ${id}     `,
+      text:`Hey! How Much Would You Rate This Outfit On A Scale Of 10 \nTo See The Outfit\nClick On The Link Given Below.\nAfter Successfull Login You Will See A Menu In That Click On *SearchPost*\nThen Search This Id.\nId = ${id}\n   `,
       url:`https://rateyouroutfit101.onrender.com`
     });
   }
@@ -189,8 +189,9 @@ export default function Home() {
       <Link to="/postimage" className='linkofnav'><p>Post A Image</p></Link>
       <Link to="/yourpost" className='linkofnav'> <p>Your Posts</p></Link>
       <Link to="/login" className='linkofnav'> <p>logout</p></Link>
-      <Link to="/searchuser" className='linkofnav'> <p>Search</p></Link>
+      <Link to="/searchuser" className='linkofnav'> <p>Search User</p></Link>
       <Link to="/contactme" className='linkofnav'> <p>Contact Me</p></Link>
+      <Link to="/searchpost" className='linkofnav'> <p>Search Post</p></Link>
     </div> : <p></p>
 }
     <div className='makespacetop'></div>
