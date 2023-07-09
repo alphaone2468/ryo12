@@ -40,7 +40,7 @@ export default function Yourpost() {
         }
        
         console.log(obj)
-        const f = await fetch("http://localhost:5000/yourpost",{
+        const f = await fetch("https://ryobackend.onrender.com/yourpost",{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{
