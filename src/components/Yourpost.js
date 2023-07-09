@@ -59,7 +59,7 @@ async function handleshare(id){
     console.log("share ", id);
     await navigator.share({
         title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
-        text:`Hey! Want To See My New Outfit ???\nYou Can Rate My Outfit On A Scale Of 10\nTo See The Outfit\nClick On The Link Given Below.\nAfter Successfull Login You Will See A Menu In That Click On "SearchPost"\nThen Search This Id.\nId = ${id}`,
+        text:`Hey! Want To See My New Outfit ???\nYou Can Rate My Outfit On A Scale Of 10\nTo See The Outfit\nClick On The Link Given Below.\nAfter Successfull Login You Will See A *Menu* In That Click On *SearchPost*\nThen Search This *Id*.\n*Id* = ${id}`,
         url:`https://rateyouroutfit101.onrender.com`
       });
   }

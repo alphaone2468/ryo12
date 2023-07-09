@@ -44,7 +44,7 @@ function Goto(){
     return(
         <>
         <div className="postcon">
-        <h1 className='makecenter2' style={{"fontFamily":'Pacifico'}}>Rate My Outfit</h1>
+        <h1 className='makecenter2'>Rate My Outfit</h1>
         {(loading) ? <p style={{fontWeight:'500'}} className='makecenter2'>loading .....  Please Wait </p> : <p></p>}
         {
             data.map((e)=>{

@@ -44,7 +44,7 @@ function SearchUser(){
         <h1 style={{"textAlign":"center"}}>Find Users</h1>
         <div className="group">
         <label>Search</label>
-        <input required="" type="text" className="input" onChange={getpersons}/>
+        <input required="" type="text" className="input" onChange={getpersons} placeholder='Search User ...'/>
         <span className="highlight"></span>
         <span className="bar"></span>
         </div>
@@ -64,7 +64,7 @@ function SearchUser(){
         </div>
         </div>
         </div>
-        <Link to="/" className='makecenter2 linkofgoto margintop'>Back To Home</Link>
+        <Link to="/" className='makecenter2 linkofgoto margintop spacebottom'>Back To Home</Link>
         </>
     )
 }

@@ -21,7 +21,7 @@ export default function Home() {
     const a=localStorage.getItem("ryo")
     document.getElementById("one").innerHTML=a
     if(!a){
-      nav("/login");
+      nav("/");
     }
     else{
     getdata()
@@ -136,7 +136,7 @@ export default function Home() {
     console.log("share ", id);
     await navigator.share({
       title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
-      text:`Hey! How Much Would You Rate This Outfit On A Scale Of 10 \nTo See The Outfit\nClick On The Link Given Below.\nAfter Successfull Login You Will See A Menu In That Click On *SearchPost*\nThen Search This Id.\nId = ${id}\n   `,
+      text:`Hey! How Much Would You Rate This Outfit On A Scale Of 10\nTo See The Outfit\nClick On The Link Given Below.\nYou Will See A *Menu* In That Click On *SearchPost*\nThen Search This *Id*.\n*Id* = ${id}\n`,
       url:`https://rateyouroutfit101.onrender.com`
     });
   }
@@ -166,6 +166,12 @@ export default function Home() {
 
     }
   }
+  function handleprofileclick(name) {
+    localStorage.setItem("SeeAUserPost",name)
+    nav("/userposts")
+
+    
+  }
   
   return (
     <>
@@ -187,11 +193,12 @@ export default function Home() {
     {(open) ? 
     <div className="navv" id="hidenavv">
       <Link to="/postimage" className='linkofnav'><p>Post A Image</p></Link>
+      <Link to="/searchuser" className='linkofnav'> <p>Search</p></Link>
       <Link to="/yourpost" className='linkofnav'> <p>Your Posts</p></Link>
       <Link to="/login" className='linkofnav'> <p>logout</p></Link>
-      <Link to="/searchuser" className='linkofnav'> <p>Search User</p></Link>
-      <Link to="/contactme" className='linkofnav'> <p>Contact Me</p></Link>
+      <Link to="/contactme" className='linkofnav'> <p>Contact Us</p></Link>
       <Link to="/searchpost" className='linkofnav'> <p>Search Post</p></Link>
+      <Link to="/following" className='linkofnav'> <p>Following</p></Link>
     </div> : <p></p>
 }
     <div className='makespacetop'></div>
@@ -203,7 +210,7 @@ export default function Home() {
       data.map((e,index)=>{
         return<>
         <img src={photo} alt="" className='postimg' />
-        <span className='makesomechages'>{e.owner}</span>
+        <span className='makesomechages' onClick={()=>handleprofileclick(e.owner)}>{e.owner}</span>
         <img src={e.image} alt="" className='postimage'/>
         <p id={`rating${e.uniqueid}`} className='ratee'>OverAll Ratings: 
           {
@@ -214,8 +221,8 @@ export default function Home() {
         <p id={`count${e.uniqueid}`}>No. Of  Ratings: {e.comments[1].count}</p>
         <p>{e.uniqueid}</p>
         <div className="sharediv" onClick={()=>{handleshare(e.uniqueid)}}>
-        <img src={share2} alt="" className='shareimg' />
-        <span  className='sharetext'>Share</span>
+        <img src={share2} alt="" className='shareimg makecurserpointer' />
+        <span  className='sharetext makecurserpointer'>Share</span>
 
         </div>
         <p id={`urated${e.uniqueid}`} style={{display:"none"}}> u rated :</p>
@@ -247,7 +254,7 @@ export default function Home() {
     </div>
     {(loading) ? <p></p> : 
     <div className="homebuttondiv">
-    <button onClick={handlenext} id="makeround">&#x2192; </button>
+    <p onClick={handlenext} id="makeround " className='make30'>&#x2192; </p>
 
     </div> }
     <p onClick={handlereset}>reset</p>

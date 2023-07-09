@@ -12,7 +12,7 @@ export default function Back() {
     }
   return (
     <div>
-      <h1 onClick={callme}>i am back</h1>
+      <h1 onClick={callme}></h1>
     </div>
   )
 }

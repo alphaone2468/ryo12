@@ -13,6 +13,7 @@ import GetAUserPosts from "./components/GetAUserPosts"
 import Goto from "./components/Goto"
 import Contact from "./components/Contact"
 import SearchPost from "./components/SearchPost"
+import GetFollowing from "./components/GetFollowing"
 
 function App(){
   return(
@@ -31,6 +32,7 @@ function App(){
         <Route path="/post/:uniqueid" element={<Goto/>}></Route>
         <Route path="/contactme" element={<Contact/>}></Route>
         <Route path="/searchpost" element={<SearchPost/>}></Route>
+        <Route path="/following" element={<GetFollowing/>}></Route>
         <Route element={<h1>error page</h1>}></Route>
 
 

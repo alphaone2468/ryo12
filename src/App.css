@@ -350,11 +350,11 @@ button{
 }
 
 .makebold{
-  font-weight: 600;
+  font-weight: 500;
   padding: 10px 130px;
   /* background: linear-gradient(45deg,yellow,orange); */
-  border: 0px;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.30);
+  border: 5px double;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.30);
   border-radius: 30px;
 
 }
@@ -386,17 +386,17 @@ button{
 @media(max-width:800px){
   .navv{
     display: grid;
-    /* grid-template-columns: 1fr 1fr 1fr; */
+    grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
-    border: 2px solid black;
+    border: 2px solid;
   }
 }
 .navv p{
   border-radius: 10px;
   padding: 4px;
   margin-top: 0px;
-  border: 2px solid black;
-
+  font-weight: 500;
+  /* border: 5px double; */
 }
 .navv p:hover{
   font-size: 17px;
@@ -493,7 +493,6 @@ button{
 .logoofuser{
   width: 140px;
   border-radius: 50%;
-  border: 2px solid black;
 }
 .logosidespan{
   position: relative;
@@ -502,7 +501,7 @@ button{
 }
 .divofuserposts{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .numberOfTotalPost{
   position: relative;
@@ -511,10 +510,11 @@ button{
   font-weight: 600;
 }
 .nameBelowProfile{
-  position: relative;
-  left: 7px;
-  bottom: 19px;
   font-weight: 600;
+  /* border: 2px solid red; */
+  padding-left: 20px;
+  position: relative;
+  bottom: 26px;
 }
 .makemeround{
   border:2px solid red;
@@ -579,13 +579,13 @@ button{
   margin-top: 16px;
 }
 .divcontact{
-  border: 2px solid ;
-  height: 89vh;
+  /* border: 2px solid ; */
+  height: 95vh;
   display: flex;
   justify-content: center;
   margin: 10px;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25); */
 }
 .colorblue{
   color: blue;
@@ -595,11 +595,43 @@ button{
   border: 2px solid red;
 }
 .topcontactdiv{
-  border:2px solid;
+  /* border:2px solid; */
   margin: 5px;
   border-radius: 10px;
   /* background:url('./components/images/Sprinkle\ \(2\).svg'); */
 }
 .spacetop{
-  margin-top: 130px;
+  margin-top: 100px;
+}
+.spacebottom{
+  margin-bottom: 130px;
+}
+.followbut{
+  border: 5px double;
+  padding: 5px 135px;
+  border-radius: 21px;
+  background-color: rgb(104,148,255);
+  color: white;
+}
+.movetop{
+  margin-bottom: 10px;
+  position: relative;
+  top: -13px;
+  left: 12px;
+  font-weight: 500;
+}
+.vh{
+  visibility: hidden;
+}
+.make30{
+  font-size: 30px;
+}
+.followinput{
+  border: 2px solid red;
+  width: 280px;
+  visibility: hidden;
+}
+.moveleftsome{
+  position: relative;
+  left: 20px;
 }
