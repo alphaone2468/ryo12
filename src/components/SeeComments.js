@@ -13,7 +13,7 @@ function Seecomments(){
     const [com,setcom]=useState([])
     async function callme(){
         const user = localStorage.getItem('ryocomm');
-        console.log(user);
+        //console.log(user);
         const obj={
             user:user
         }
@@ -26,7 +26,7 @@ function Seecomments(){
         }
     })
     const res=await f.json();
-    console.log(res.message[0])
+    //console.log(res.message[0])
     setdata(res.message[0])
     const commm = res.message[0].comments
     const realcomments=commm.filter((e,index)=>{

@@ -36,7 +36,7 @@ export default function Home() {
         email:b
       }
       setloading(true);
-      console.log(loading)
+      //console.log(loading)
       const f=await fetch("https://ryobackend.onrender.com/getpost",{
         method:'POST',
         body:JSON.stringify(objn),
@@ -45,17 +45,17 @@ export default function Home() {
         }
       })
       const res=await f.json()
-      console.log(res)
+      //console.log(res)
       try{
-        console.log(res[0].comments)
+        //console.log(res[0].comments)
 
       }
       catch{
-        console.log("error");
+        //console.log("error");
       }
       res.map((e)=>{
         var arr=e.comments[0].ratings;
-        console.log(e.comments[0].ratings);
+        //console.log(e.comments[0].ratings);
         var sum=0;
         for (let index = 0; index < arr.length; index++) {
           sum=sum+arr[index]
@@ -63,29 +63,29 @@ export default function Home() {
         }
         var avg=sum/arr.length;
 
-        console.log(avg);
+        //console.log(avg);
         rate.push(avg);
       })
       setloading(false);
-      console.log(res)
-      console.log(rate)
+      //console.log(res)
+      //console.log(rate)
       setrat(rate)
       setdata(res)
     }
 
   function handlenewratings(val){
-    // console.log(" i sm calling" , val)
+    // //console.log(" i sm calling" , val)
     var r=localStorage.getItem("deleteme");
-    // console.log(" i  am from home and value is ",r);
+    // //console.log(" i  am from home and value is ",r);
     var c=document.getElementById(`count${val}`).innerHTML.slice(17,19)
-    // console.log("i am c of val",c)
+    // //console.log("i am c of val",c)
     var mul=document.getElementById(`rating${val}`).innerHTML.slice(16,40)
-    // console.log(mul)
+    // //console.log(mul)
     var finalvalue=eval(mul*c)
-    // console.log(finalvalue)
+    // //console.log(finalvalue)
     var af=finalvalue+parseInt(r);
     var seriousfinal=af/(parseInt(c)+1)
-    // console.log(seriousfinal)
+    // //console.log(seriousfinal)
     document.getElementById(`rating${val}`).innerHTML=`OverAll rating  : ${seriousfinal}`
     document.getElementById(`count${val}`).innerHTML=`No. of Ratings   : ${parseInt(c)+1}`
     document.getElementById(`urated${val}`).style.display='block';
@@ -96,11 +96,11 @@ export default function Home() {
     },2000)
   }
   function handlenext(){
-    // console.log("i am next")
+    // //console.log("i am next")
     nav("/back")
   }
   async function handlecomm(ids){
-    // console.log(comm)
+    // //console.log(comm)
     var n=localStorage.getItem('ryo')
     const obj={
       comment:comm,
@@ -108,7 +108,7 @@ export default function Home() {
       id:ids
     }
     setcommentloading(true);
-    // console.log(obj)
+    // //console.log(obj)
     const f = await fetch("https://ryobackend.onrender.com/comment",{
       method:'PUT',
       body:JSON.stringify(obj),
@@ -117,7 +117,7 @@ export default function Home() {
       }
     })
     const res= await f.json();
-    // console.log(res)
+    // //console.log(res)
     setcommentloading(false);
     if(res.success == "comment posted"){
       document.getElementById(`upperdiv${ids}`).style.display='block';
@@ -128,12 +128,12 @@ export default function Home() {
     }
   }
   function handleMoreComments(val){
-    // console.log(val)
+    // //console.log(val)
     localStorage.setItem("ryocomm",val)
     nav("/morecomments")
   }
   async function handleshare(id){
-    console.log("share ", id);
+    //console.log("share ", id);
     await navigator.share({
       title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
       text:`Hey! How Much Would You Rate This Outfit On A Scale Of 10\nTo See The Outfit\nClick On The Link Given Below.\nYou Will See A *Menu* In That Click On *SearchPost*\nThen Search This *Id*.\n*Id* = ${id}\n`,
@@ -154,10 +154,10 @@ export default function Home() {
       }
     })
     await f.json();
-    // console.log(res);
+    // //console.log(res);
   }
   function handleopenclose(){
-    console.log("calling")
+    //console.log("calling")
     if(open){
       setopen(false)
     }

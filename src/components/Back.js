@@ -7,7 +7,7 @@ export default function Back() {
         callme()
     })
     function callme() {
-        // console.log(" calling ")
+        // //console.log(" calling ")
         nav("/")
     }
   return (

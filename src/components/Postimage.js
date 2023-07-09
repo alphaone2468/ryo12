@@ -7,11 +7,11 @@ export default function About() {
   const [string,setstring]=useState("")
   const [img,setimg]=useState("")
   const [loading,setloading]=useState(false);
-  console.log(img);
+  //console.log(img);
   async function callme(e) {
     const file=e.target.files[0];
     const base64=await convertToString(file);
-    console.log(base64)
+    //console.log(base64)
     setimg(base64)
     document.getElementById("hidemeinstart").style.display="block"
     setstring(base64)
@@ -33,16 +33,16 @@ export default function About() {
         }
     })
     const res=await f.json()
-    console.log(res)
+    //console.log(res)
     if(res.success=="up"){
       document.getElementById("hideme").style.display="block"
       setloading(false);
     }
     
-    console.log(obj)
+    //console.log(obj)
   }
   function hidemecall() {
-    console.log("calling")
+    //console.log("calling")
     document.getElementById("hideme").style.display="none";
 
   }
@@ -68,7 +68,7 @@ export default function About() {
 }
 
 function convertToString(file){
-  console.log("calling")
+  //console.log("calling")
   return new Promise((resolve,reject)=>{
     const fileReader=new FileReader();
     fileReader.readAsDataURL(file)

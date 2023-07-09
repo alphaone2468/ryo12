@@ -12,9 +12,9 @@ function Reg(){
         document.getElementById("three").style.display="none"
         document.getElementById("four").style.display="none"
         document.getElementById("five").style.display="none"
-        console.log(name)
-        console.log(email)
-        console.log(password)
+        //console.log(name)
+        //console.log(email)
+        //console.log(password)
         if(name.length<1){
             document.getElementById("one").style.display="block"
             return false
@@ -34,7 +34,7 @@ function Reg(){
             seenupto:1
         }
         setloading(true);
-        console.log(obj)
+        //console.log(obj)
         let f=await fetch("https://ryobackend.onrender.com/reg",{
             method:"POST",
             body:JSON.stringify(obj),
@@ -43,7 +43,7 @@ function Reg(){
             }
         })
         let data = await f.json()
-        console.log(data)
+        //console.log(data)
         var set=0;
         if(data.error=="email exist"){
             document.getElementById("four").style.display="block"

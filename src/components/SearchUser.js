@@ -8,7 +8,7 @@ function SearchUser(){
     const [loading,setloading] = useState(false);
     const nav=useNavigate();
     useEffect(()=>{
-        console.log(value);
+        //console.log(value);
         callme();
     },[value])
     async function callme() {
@@ -24,7 +24,7 @@ function SearchUser(){
             }
         })
         let res=await f.json();
-        console.log(res);
+        //console.log(res);
         setdata(res);
         setloading(false);
     }
@@ -32,7 +32,7 @@ function SearchUser(){
         setvalue(e.target.value);
     }
     async function seeyourspost(val){
-        console.log("seeing ",val);
+        //console.log("seeing ",val);
         localStorage.setItem("SeeAUserPost",val);
         nav("/userposts");
 

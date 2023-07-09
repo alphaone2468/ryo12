@@ -14,26 +14,26 @@ function SearchPost(){
     async function callme(){
         
         setloading(true);
-        console.log(para);
+        //console.log(para);
         const f = await fetch(`https://ryobackend.onrender.com/goto/${postid}`)
         const res= await f.json();
-        console.log(res);
+        //console.log(res);
         let sum = 0;
         let ratearr = res[0].comments[0].ratings
         ratearr.forEach((e)=>{
             sum = sum + e;
         })
         let avg = sum/ratearr.length
-        console.log(avg)
+        //console.log(avg)
         setrate(avg);
         setdata(res);
         setloading(false)
     }
     function handleratings(){
-        console.log("calling");
+        //console.log("calling");
         let newratearr=data[0].comments[0].ratings
         newratearr.push(parseInt(localStorage.getItem("deleteme")))
-        console.log(newratearr)
+        //console.log(newratearr)
         let sum1=0;
         newratearr.forEach((e)=>{
             sum1= sum1 + e;
@@ -41,13 +41,13 @@ function SearchPost(){
         let newavg=sum1/newratearr.length
         setrate(newavg);
         var oldcount = document.getElementById("updaterate").innerHTML;
-        console.log(typeof(oldcount))
+        //console.log(typeof(oldcount))
         var newcount = parseInt(oldcount) + 1;
         document.getElementById("updaterate").innerHTML=newcount
     }
     function getpostid(e) {
-        console.log("calling")
-        console.log(e.target.value);
+        //console.log("calling")
+        //console.log(e.target.value);
         setpostid(e.target.value)
     }
     return(

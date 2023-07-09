@@ -23,7 +23,7 @@ export default function Yourpost() {
             name:n
         }
         setloading(true);
-        console.log(obj)
+        //console.log(obj)
         const f = await fetch("https://ryobackend.onrender.com/yourpost",{
             method:"POST",
             body:JSON.stringify(obj),
@@ -32,31 +32,31 @@ export default function Yourpost() {
             }
         })
         const res = await f.json()
-        console.log(res)
+        //console.log(res)
         setloading(false);
         res.map((e)=>{
         var arr=e.comments[0].ratings;
-        console.log(arr)
+        //console.log(arr)
         var sum=0;
         for (let index = 0; index < arr.length; index++) {
             sum=sum+arr[index]
         }
         var avg=sum/arr.length;
 
-        console.log(avg)
+        //console.log(avg)
         rate.push(avg);
        
         })
 
-      console.log(res)
-      console.log(rate)
+      //console.log(res)
+      //console.log(rate)
       settotalpost(res.length)
       setrat(rate)
       setdata(res)
     }
 },[])
 async function handleshare(id){
-    console.log("share ", id);
+    //console.log("share ", id);
     await navigator.share({
         title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
         text:`Hey! Want To See My New Outfit ???\nYou Can Rate My Outfit On A Scale Of 10\nTo See The Outfit\nClick On The Link Given Below.\nAfter Successfull Login You Will See A *Menu* In That Click On *SearchPost*\nThen Search This *Id*.\n*Id* = ${id}`,

@@ -12,11 +12,11 @@ function GetFollowing(){
     async function callme(){
         setloading(true);
         const user=localStorage.getItem("ryo");
-        console.log(user)
+        //console.log(user)
         const obj={
             user:user
         }
-        console.log("calling")
+        //console.log("calling")
         const f = await fetch("https://ryobackend.onrender.com/getfoll",{
             method:"post",
             body:JSON.stringify(obj),
@@ -25,7 +25,7 @@ function GetFollowing(){
             }
         })
         const res = await f.json();
-        console.log(res);
+        //console.log(res);
         setfollowarray(res[0].following)
         setloading(false);
     }
