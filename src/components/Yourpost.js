@@ -21,7 +21,7 @@ export default function Yourpost() {
         const obj1={
             user:a        
         }
-        const f1=await fetch("http://localhost:5000/getfoll",{
+        const f1=await fetch("https://ryobackend.onrender.com/getfoll",{
             method:"post",
             body:JSON.stringify(obj1),
             headers:{
