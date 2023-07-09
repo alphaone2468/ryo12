@@ -2,19 +2,35 @@ import React, { useEffect, useState } from 'react'
 import load from "./images/loading.gif"
 import { useNavigate,Link } from 'react-router-dom';
 import share2 from './images/share2.png'
+import photo from './images/ProfileLogo.jpg'
 
 export default function Yourpost() {
     const [data,setdata] = useState([])
     const [rat,setrat]=useState([])
     const [totalpost,settotalpost] = useState();
     const [loading,setloading]=useState(false);
+    const [followerss,setfollowerss]=useState(0);
     const nav=useNavigate();
     useEffect(()=>{
     callme();
 
     var rate = [];
     async function callme(){
+        setloading(true);
         const a=localStorage.getItem('ryo');
+        const obj1={
+            user:a        
+        }
+        const f1=await fetch("http://localhost:5000/getfoll",{
+            method:"post",
+            body:JSON.stringify(obj1),
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+        const res1=await f1.json()
+        console.log(res1);
+        setfollowerss(res1[0].followers)
         if(!a){
             nav("/login");
         }
@@ -22,9 +38,9 @@ export default function Yourpost() {
         const obj = {
             name:n
         }
-        setloading(true);
-        //console.log(obj)
-        const f = await fetch("https://ryobackend.onrender.com/yourpost",{
+       
+        console.log(obj)
+        const f = await fetch("http://localhost:5000/yourpost",{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{
@@ -32,31 +48,31 @@ export default function Yourpost() {
             }
         })
         const res = await f.json()
-        //console.log(res)
+        console.log(res)
         setloading(false);
         res.map((e)=>{
         var arr=e.comments[0].ratings;
-        //console.log(arr)
+        console.log(arr)
         var sum=0;
         for (let index = 0; index < arr.length; index++) {
             sum=sum+arr[index]
         }
         var avg=sum/arr.length;
 
-        //console.log(avg)
+        console.log(avg)
         rate.push(avg);
        
         })
 
-      //console.log(res)
-      //console.log(rate)
+      console.log(res)
+      console.log(rate)
       settotalpost(res.length)
       setrat(rate)
       setdata(res)
     }
 },[])
 async function handleshare(id){
-    //console.log("share ", id);
+    console.log("share ", id);
     await navigator.share({
         title:"Hey! How Much Would You Rate This Outfit On A Scale Of 10 ",
         text:`Hey! Want To See My New Outfit ???\nYou Can Rate My Outfit On A Scale Of 10\nTo See The Outfit\nClick On The Link Given Below.\nAfter Successfull Login You Will See A *Menu* In That Click On *SearchPost*\nThen Search This *Id*.\n*Id* = ${id}`,
@@ -66,6 +82,20 @@ async function handleshare(id){
   return (
     <>
     <div className="postcon">
+    <div className='divofuserposts'>
+    <div>
+        <img src={photo} alt="" className='logoofuser'/>
+        <p className='nameBelowProfile'>{localStorage.getItem("ryo")}</p>
+    </div>
+    <div>
+        <span className='numberOfTotalPost'>{totalpost}</span>
+        <span className='logosidespan'>Posts</span>
+    </div>
+    <div>
+        <span className='numberOfTotalPost' id='followers'>{followerss}</span>
+        <span className='logosidespan moveleftsome'>Followers</span>
+        </div>
+    </div>
     <h1 className='maketextcenter'>Your Posts</h1>
     <p className='maketextcenter'>Total Posts posted : <strong>{totalpost}</strong></p>
     {(loading)? <div className="loadclass">
