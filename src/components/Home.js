@@ -37,7 +37,7 @@ export default function Home() {
       }
       setloading(true);
       console.log(loading)
-      const f=await fetch("http://localhost:5000/getpost",{
+      const f=await fetch("https://ryobackend.onrender.com/getpost",{
         method:'POST',
         body:JSON.stringify(objn),
         headers:{
@@ -109,7 +109,7 @@ export default function Home() {
     }
     setcommentloading(true);
     // console.log(obj)
-    const f = await fetch("http://localhost:5000/comment",{
+    const f = await fetch("https://ryobackend.onrender.com/comment",{
       method:'PUT',
       body:JSON.stringify(obj),
       headers:{
