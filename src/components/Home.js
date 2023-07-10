@@ -21,7 +21,7 @@ export default function Home() {
     const a=localStorage.getItem("ryo")
     document.getElementById("one").innerHTML=a
     if(!a){
-      nav("/");
+      nav("/login");
     }
     else{
     getdata()
