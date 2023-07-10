@@ -200,9 +200,11 @@ export default function Home() {
     </div> : <p></p>
 }
     <div className='makespacetop'></div>
+     <div>
     {(loading)? <div className="loadclass">
     <img src={load} alt="" className='loadimg'/>
     </div> : <p></p>}
+      </div>
     <div>
     {
       data.map((e,index)=>{
