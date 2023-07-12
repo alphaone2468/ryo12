@@ -267,7 +267,7 @@ button{
   bottom: 18px;
 }
 .makespacetop{
-  height: 4px;
+  height: 40px;
 }
 .makebold1{
   font-weight: 500;
@@ -343,6 +343,8 @@ button{
 .loadimg{
   width: 50%;
   border-radius: 20px;
+  margin: 14px auto;
+  display: block;
 
 }
 .loadclass{

@@ -146,7 +146,7 @@ export default function Home() {
     const obj={
       email:e
     }
-    const f=await fetch("http://localhost:5000/reset",{
+    const f=await fetch("https://ryobackend.onrender.com/reset",{
       method:"post",
       body:JSON.stringify(obj),
       headers:{
@@ -174,25 +174,33 @@ export default function Home() {
 
     
   }
+  function handleopenprofile(){
+    localStorage.setItem("SeeAUserPost",document.getElementById("one").innerHTML)
+    nav("/userposts")
+  }
   
   return (
     <>
     <div className="tophomecon">
 
     <div className="postcon">
+    <div className=''>
     <div style={{display:"flex",flexDirection:'row-reverse'}} onClick={handleopenclose} className='addborder1'>
-    <img src={lines} alt="error" className='postimg'/>
+    <img src={lines} alt="error" className='postimg makefixed'/>
     </div>
+
     <p className='maketopsome'>RateYourOutfit</p>
     <div className="floatr" id='hideprofile'>
     <span id="one"></span>
-    <img src={photo} alt="" id="profileimg" className="makeMePointer" />
+    <img src={photo} alt="" id="profileimg" className="makeMePointer" onClick={handleopenprofile}/>
     </div>
+    </div>
+
     {(open) ? 
     <div className="navv" id="hidenavv">
       <Link to="/postimage" className='linkofnav'><p>Post A Image</p></Link>
       <Link to="/searchuser" className='linkofnav'> <p>Search</p></Link>
-      <Link to="/yourpost" className='linkofnav'> <p>Your Posts</p></Link>
+      <Link to="/yourpost" className='linkofnav'> <p>Your Profile</p></Link>
       <Link to="/contactme" className='linkofnav'> <p>Contact Us</p></Link>
       <Link to="/searchpost" className='linkofnav'> <p>Search Post</p></Link>
       <Link to="/following" className='linkofnav'> <p>Following</p></Link>
@@ -200,10 +208,16 @@ export default function Home() {
     </div> : <p></p>
 }
     <div className='makespacetop'></div>
-    {(loading)? <div className="loadclass">
+    <div className="up">
+    <div className='borderred'>
+
+    {(loading)? 
     <img src={load} alt="" className='loadimg'/>
-    </div> : <p></p>}
+    : <p></p>}
     <div>
+    </div>
+    </div>
+
     {
       data.map((e,index)=>{
         return<>
