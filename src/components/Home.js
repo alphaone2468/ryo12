@@ -93,7 +93,7 @@ export default function Home() {
     setTimeout(()=>{
 
       document.getElementById(`hideMeAfterRated${val}`).style.display='none';
-    },2000)
+    },800)
   }
   function handlenext(){
     // console.log("i am next")

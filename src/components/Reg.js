@@ -12,9 +12,9 @@ function Reg(){
         document.getElementById("three").style.display="none"
         document.getElementById("four").style.display="none"
         document.getElementById("five").style.display="none"
-        //console.log(name)
-        //console.log(email)
-        //console.log(password)
+        console.log(name)
+        console.log(email)
+        console.log(password)
         if(name.length<1){
             document.getElementById("one").style.display="block"
             return false
@@ -34,7 +34,9 @@ function Reg(){
             seenupto:1
         }
         setloading(true);
-        //console.log(obj)
+        document.getElementById("sbut").setAttribute("disabled","disabled")
+        console.log("calling    grsghb")
+        console.log(obj)
         let f=await fetch("https://ryobackend.onrender.com/reg",{
             method:"POST",
             body:JSON.stringify(obj),
@@ -43,14 +45,16 @@ function Reg(){
             }
         })
         let data = await f.json()
-        //console.log(data)
+        console.log(data)
         var set=0;
         if(data.error=="email exist"){
             document.getElementById("four").style.display="block"
+            document.getElementById("sbut").removeAttribute("disabled")
             set = set + 1;
         }
         if(data.error=="username exist"){
             document.getElementById("five").style.display="block"
+            document.getElementById("sbut").removeAttribute("disabled")
             set=set+1;
         }
         if(set==0){
@@ -74,7 +78,7 @@ function Reg(){
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <p className="makemered" id="one">Field is Missing</p>
-                <p className="makemered" id="five">Usrname Already Exist</p>
+                <p className="makemered" id="five">Username Already Exist</p>
                 </div>
                 <div className="group">
                 <label>Email</label>
@@ -93,7 +97,7 @@ function Reg(){
                 </div>
                 {(loading)? <p>loading......</p> : <p></p>}
                 <div className="makeloginbuttoncenter">
-                <button onClick={callme} className="regbut">SignUp </button>
+                <button onClick={callme} className="regbut" id="sbut">SignUp </button>
 
                 </div>
                 <div className="makeloginbuttoncenter">
