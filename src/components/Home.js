@@ -71,23 +71,33 @@ export default function Home() {
       console.log(rate)
       setrat(rate)
       setdata(res)
+      console.log("hi caling")
+      if(document.body.style.backgroundColor==="rgb(49, 59, 75)"){
+        setTimeout(()=>{
+          handledark();
+        },2000)
+      }
+      else{
+        console.log("not")
+        console.log(document.body.style.backgroundColor)
+      }
     }
 
   function handlenewratings(val){
     // console.log(" i sm calling" , val)
     var r=localStorage.getItem("deleteme");
     // console.log(" i  am from home and value is ",r);
-    var c=document.getElementById(`count${val}`).innerHTML.slice(17,19)
+    var c=document.getElementById(`count${val}`).innerHTML
     // console.log("i am c of val",c)
-    var mul=document.getElementById(`rating${val}`).innerHTML.slice(16,40)
+    var mul=document.getElementById(`rating${val}`).innerHTML
     // console.log(mul)
     var finalvalue=eval(mul*c)
     // console.log(finalvalue)
     var af=finalvalue+parseInt(r);
     var seriousfinal=af/(parseInt(c)+1)
     // console.log(seriousfinal)
-    document.getElementById(`rating${val}`).innerHTML=`OverAll rating  : ${seriousfinal}`
-    document.getElementById(`count${val}`).innerHTML=`No. of Ratings   : ${parseInt(c)+1}`
+    document.getElementById(`rating${val}`).innerHTML=seriousfinal
+    document.getElementById(`count${val}`).innerHTML=parseInt(c)+1
     document.getElementById(`urated${val}`).style.display='block';
     document.getElementById(`urated${val}`).innerHTML=`You Rated : ${r}`;
     setTimeout(()=>{
@@ -163,8 +173,14 @@ export default function Home() {
       setopen(false)
     }
     else{
-      document.getElementById("hideprofile").style.display="none";
       setopen(true);
+      document.getElementById("hideprofile").style.display="none";
+      if(document.body.style.backgroundColor==="rgb(49, 59, 75)"){
+        setTimeout(()=>{
+          handledark();
+        },10)
+      }
+   
 
     }
   }
@@ -178,7 +194,34 @@ export default function Home() {
     localStorage.setItem("SeeAUserPost",document.getElementById("one").innerHTML)
     nav("/userposts")
   }
-  
+  function handledark(){
+    console.log("calling dark")
+    document.body.style.backgroundColor="rgb(49, 59, 75)";
+    document.body.style.color="white";
+    try{
+    for(var i=1;i<11;i++){
+      document.getElementsByClassName("postimg")[i].style.mixBlendMode="multiply"
+    }
+    for(var j=0;j<10;j++){
+      
+      document.getElementsByClassName("shareimg")[j].style.mixBlendMode="multiply"
+    }
+    try{
+      for(var j=0;j<7;j++){
+      
+        document.querySelectorAll("a")[j].style.color="white"
+    }
+    }
+    catch{
+
+    }
+  }
+  catch{
+    
+  }
+
+  }
+  // darkslategrey
   return (
     <>
     <div className="tophomecon">
@@ -205,7 +248,8 @@ export default function Home() {
       <Link to="/searchpost" className='linkofnav'> <p>Search Post</p></Link>
       <Link to="/following" className='linkofnav'> <p>Following</p></Link>
       <Link to="/login" className='linkofnav'> <p>logout</p></Link>
-    </div> : <p></p>
+      <p onClick={handledark}>DarkMode</p>
+    </div> : <p id='less'></p>
 }
     <div className='makespacetop'></div>
     <div className="up">
@@ -224,14 +268,27 @@ export default function Home() {
         <img src={photo} alt="" className='postimg' />
         <span className='makesomechages' onClick={()=>handleprofileclick(e.owner)}>{e.owner}</span>
         <img src={e.image} alt="" className='postimage'/>
-        <p id={`rating${e.uniqueid}`} className='ratee'>OverAll Ratings: 
-          {
-            (e.uniqueid%10==0)? (rat[9])? rat[9] : 0 
-            :(rat[(e.uniqueid)%10-1])? rat[(e.uniqueid)%10-1] : 0
-          }
-        </p>
-        <p id={`count${e.uniqueid}`}>No. Of  Ratings: {e.comments[1].count}</p>
-        <p>{e.uniqueid}</p>
+        <div className="three">
+          <div>
+            <p id={`rating${e.uniqueid}`} className='ratee makebold2AndCenter'>
+            {
+              (e.uniqueid%10==0)? (rat[9])? rat[9] : 0 
+              :(rat[(e.uniqueid)%10-1])? rat[(e.uniqueid)%10-1] : 0
+            }
+            </p>
+            <p className='makecenter2'>Over All Ratings</p>
+          </div>
+          <div>
+            <p id={`count${e.uniqueid}`} className='makebold2AndCenter'>{e.comments[1].count}</p>
+            <p className='makecenter2'>No. Of Ratings</p>
+          </div>
+          <div>
+          <p className='makebold2AndCenter'>{e.uniqueid}</p>
+          <p className='makecenter2'>Id </p>
+
+          </div>
+
+        </div>
         <div className="sharediv" onClick={()=>{handleshare(e.uniqueid)}}>
         <img src={share2} alt="" className='shareimg makecurserpointer' />
         <span  className='sharetext makecurserpointer'>Share</span>

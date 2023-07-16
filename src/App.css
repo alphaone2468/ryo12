@@ -277,7 +277,7 @@ button{
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(0, 0,0, 0.25);
+  box-shadow: 1px 1px 5px rgba(0, 0,0, 0.25);
   height: 56px;
 }
 .child{
@@ -345,6 +345,7 @@ button{
   border-radius: 20px;
   margin: 14px auto;
   display: block;
+  mix-blend-mode: multiply;
 
 }
 .loadclass{
@@ -648,4 +649,12 @@ button{
 }
 .addborder1{
   border:  2px solid darkslateblue;
+}
+.three{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.makebold2AndCenter{
+  font-weight: 600;
+  text-align: center;
 }
