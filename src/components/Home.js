@@ -62,6 +62,7 @@ export default function Home() {
           
         }
         var avg=sum/arr.length;
+        avg=parseFloat(avg.toFixed(2));
 
         console.log(avg);
         rate.push(avg);
@@ -134,7 +135,7 @@ export default function Home() {
       setTimeout(() => {
         document.getElementById(`upperdiv${ids}`).style.display='none';
         
-      }, 3000);
+      }, 1000);
     }
   }
   function handleMoreComments(val){
@@ -199,26 +200,25 @@ export default function Home() {
     document.body.style.backgroundColor="rgb(49, 59, 75)";
     document.body.style.color="white";
     try{
-    for(var i=1;i<11;i++){
-      document.getElementsByClassName("postimg")[i].style.mixBlendMode="multiply"
+      var len = document.getElementsByClassName("postimg").length
+      for(var i=0;i<len;i++){
+        document.getElementsByClassName("postimg")[i].style.mixBlendMode="multiply"
+      }
+      document.getElementById("profileimg").style.mixBlendMode="color-burn"
+       
     }
-    for(var j=0;j<10;j++){
-      
-      document.getElementsByClassName("shareimg")[j].style.mixBlendMode="multiply"
-    }
-    try{
-      for(var j=0;j<7;j++){
-      
-        document.querySelectorAll("a")[j].style.color="white"
-    }
-    }
-    catch{
-
-    }
-  }
   catch{
     
   }
+  try{
+    for(var j=0;j<7;j++){
+      document.querySelectorAll("a")[j].style.color="white"
+    }
+  }
+  catch{
+
+  }
+  document.getElementsByClassName("addborder1")[0].style.border="2px solid white";
 
   }
   // darkslategrey

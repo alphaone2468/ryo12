@@ -13,7 +13,7 @@ function GetAUserPosts(){
 
     async function callme(){
         const user1=localStorage.getItem("ryo");
-        //console.log(user1)
+        console.log(user1)
         const obj1={
             user:user1
         }
@@ -24,15 +24,15 @@ function GetAUserPosts(){
                 'Content-Type':"application/json"
             }
         })
-        //console.log("calling get followers");
+        console.log("calling get followers");
         const followingdata = await f1.json();
-        //console.log(followingdata);
-        //console.log(followingdata[0].following)
+        console.log(followingdata);
+        console.log(followingdata[0].following)
 
         //getting the following array code ends here
 
         
-        //console.log("calling")
+        console.log("calling")
         setloading(true);
         const user=localStorage.getItem("SeeAUserPost");
         const obj={
@@ -46,7 +46,7 @@ function GetAUserPosts(){
             }
         })
         const res = await f.json();
-        //console.log(res);
+        console.log(res);
         setdata(res[0]);
         settotalpost(res[0].length);
         setfollowers(res[1]);
@@ -58,20 +58,20 @@ function GetAUserPosts(){
                 sum = sum + ele;
             })
             let avg = sum/calavg.length
-            //console.log(avg)
+            console.log(avg)
             ratearr.push(avg);
 
         })
-        //console.log(ratearr);
+        console.log(ratearr);
         setratearray(ratearr);
         
 
 
         // code to check whether show follow (or) following
 
-        //console.log(user,user1,followingdata)
+        console.log(user,user1,followingdata)
         let ifFollow=followingdata[0].following.includes(user);
-        //console.log(ifFollow)
+        console.log(ifFollow)
         if(ifFollow){
             document.getElementById("followbutton").innerHTML="Following";
             document.getElementsByClassName("vh")[0].style.visibility="visible"
@@ -90,7 +90,7 @@ function GetAUserPosts(){
         if(check=="Following"){
             return false;
         }
-        //console.log("calling")
+        console.log("calling")
         document.getElementById("followers").innerHTML=parseInt(document.getElementById("followers").innerHTML) + 1;
         document.getElementById("followbutton").innerHTML="Following"
         const obj={
@@ -105,7 +105,7 @@ function GetAUserPosts(){
             }
         })
         const res=await f.json();
-        //console.log(res);
+        console.log(res);
     }
     return (
         <>
@@ -137,7 +137,7 @@ function GetAUserPosts(){
                     <span className='makesomechages'>{e.owner}</span>
                     <img src={e.image} alt="" className='postimage'/>
                     <p className='maketextcenter'>No. of ratings : <strong>{e.comments[1].count}</strong></p>
-                    <p id={`rating${e.uniqueid}`} className='maketextcenter'>OverAll Ratings {ratearray[index]}</p>
+                    <p id={`rating${e.uniqueid}`} className='maketextcenter'>OverAll Ratings {(ratearray[index])? ratearray[index]:0}</p>
                     </div>
                 </>
             })
