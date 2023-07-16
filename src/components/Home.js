@@ -200,25 +200,20 @@ export default function Home() {
     document.body.style.backgroundColor="rgb(49, 59, 75)";
     document.body.style.color="white";
     try{
-      var len = document.getElementsByClassName("postimg").length
-      for(var i=0;i<len;i++){
-        document.getElementsByClassName("postimg")[i].style.mixBlendMode="multiply"
+      for(var j=0;j<7;j++){
+        document.querySelectorAll("a")[j].style.color="white"
       }
+    }
+    catch{
+      
+    }
+    try {
       document.getElementById("profileimg").style.mixBlendMode="color-burn"
-       
-    }
-  catch{
-    
-  }
-  try{
-    for(var j=0;j<7;j++){
-      document.querySelectorAll("a")[j].style.color="white"
-    }
-  }
-  catch{
+      } 
+    catch  {
 
-  }
-  document.getElementsByClassName("addborder1")[0].style.border="2px solid white";
+    }
+    document.getElementsByClassName("addborder1")[0].style.border="2px solid white";
 
   }
   // darkslategrey
