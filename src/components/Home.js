@@ -97,6 +97,7 @@ export default function Home() {
     var af=finalvalue+parseInt(r);
     var seriousfinal=af/(parseInt(c)+1)
     // console.log(seriousfinal)
+    seriousfinal=parseFloat(seriousfinal.toFixed(3))
     document.getElementById(`rating${val}`).innerHTML=seriousfinal
     document.getElementById(`count${val}`).innerHTML=parseInt(c)+1
     document.getElementById(`urated${val}`).style.display='block';
@@ -104,7 +105,7 @@ export default function Home() {
     setTimeout(()=>{
 
       document.getElementById(`hideMeAfterRated${val}`).style.display='none';
-    },800)
+    },500)
   }
   function handlenext(){
     // console.log("i am next")
