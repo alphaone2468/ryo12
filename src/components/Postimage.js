@@ -34,8 +34,9 @@ export default function About() {
     })
     const res=await f.json()
     //console.log(res)
-    if(res.success=="up"){
+    if(res.success==="up"){
       document.getElementById("hideme").style.display="block"
+      document.getElementById("successUpload").style.display="block" 
       setloading(false);
     }
     
@@ -57,7 +58,7 @@ export default function About() {
         </label>
       <input type="file" name="ima" id="file-upload" accept='.jpg,.jepg,.png' onChange={callme} style={{"display":"none"}}/>
       <img src={img} alt="" className='postimage someMarginInLeftAndRight none' id="hidemeinstart"/>
-      <p id="hideme" className='none'><strong>Image Posted Successfully</strong></p>
+      <p id="successUpload" className='none makecenter2 makebold1'><strong>Image Posted Successfully</strong></p>
       {(loading)? <p className='aligncenter'><strong>posting.....</strong></p>:""}
       <div className="butcon">
       <button onClick={handlesubmit} className='makebold'>Submit</button>
