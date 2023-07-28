@@ -1,5 +1,5 @@
 *{
-  /*font-family: 'Outfit', sans-serif !important;*/
+  font-family: 'Outfit', sans-serif !important;
   font-family: 'Bungee', cursive !important ;
 }
 .nav{
@@ -653,6 +653,7 @@ button{
   position: relative;
   bottom: 45px;
   left: 5px;
+  font-family: 'Bungee', cursive ;
 }
 .addborder1{
   border:  2px solid darkslateblue;
