@@ -279,8 +279,8 @@ export default function Home() {
             <p className='makecenter2'>No. Of Ratings</p>
           </div>
           <div>
-          <p className='makebold2AndCenter' style={{display:none}}>{e.uniqueid}</p>
-          <p className='makecenter2' style={{display:none}}>Id </p>
+          <p className='makebold2AndCenter'>{e.uniqueid}</p>
+          <p className='makecenter2'>Id </p>
 
           </div>
 
